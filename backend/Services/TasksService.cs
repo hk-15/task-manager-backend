@@ -20,8 +20,9 @@ public class TasksService(ITasksRepo tasksRepo) : ITasksService
         var task = await _tasksRepo.GetById(id) ?? throw new Exception($"Task with id {id} not found");
         return new CaseworkerTaskResponse
         {
+            Id = task.Id,
             Title = task.Title,
-            Description = task.Title,
+            Description = task.Description,
             Status = task.Status,
             DueTime = task.DueTime.ToString()
         };

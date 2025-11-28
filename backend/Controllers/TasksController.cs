@@ -1,3 +1,4 @@
+using backend.Exceptions;
 using backend.Models.Request;
 using backend.Models.Response;
 using backend.Services;
@@ -21,9 +22,9 @@ public class TasksController(ITasksService tasksService) : ControllerBase
             var response = await _tasksService.GetById(id);
             return Ok(response);
         }
-        catch
+        catch (Exception ex)
         {
-            return NotFound();
+            return NotFound(new ErrorResponse { Message = ex.Message });
         }
     }
 
