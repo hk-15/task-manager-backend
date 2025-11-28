@@ -45,6 +45,10 @@ public class TasksControllerTests
         var actualResponse = okResult.Value as CaseworkerTaskResponse;
         actualResponse.Should().NotBeNull();
         actualResponse.Id.Should().Be(expectedResponse.Id);
+        actualResponse.Title.Should().Be(expectedResponse.Title);
+        actualResponse.Description.Should().Be(expectedResponse.Description);
+        actualResponse.Status.Should().Be(expectedResponse.Status);
+        actualResponse.DueTime.Should().Be(expectedResponse.DueTime);
     }
 
     [Fact]
@@ -101,7 +105,11 @@ public class TasksControllerTests
         okResult.StatusCode.Should().Be(200);
         var actualResponse = okResult.Value as CaseworkerTaskResponse;
         actualResponse.Should().NotBeNull();
-        actualResponse.Id.Should().Be(newTaskId);
+        actualResponse.Id.Should().Be(newTaskResponse.Id);
+        actualResponse.Title.Should().Be(newTaskResponse.Title);
+        actualResponse.Description.Should().Be(newTaskResponse.Description);
+        actualResponse.Status.Should().Be(newTaskResponse.Status);
+        actualResponse.DueTime.Should().Be(newTaskResponse.DueTime);
     }
 
 }
