@@ -1,3 +1,4 @@
+using System.Globalization;
 using backend.Models.Database;
 using backend.Models.Request;
 using backend.Models.Response;
@@ -24,7 +25,7 @@ public class TasksService(ITasksRepo tasksRepo) : ITasksService
             Title = task.Title,
             Description = task.Description,
             Status = task.Status,
-            DueTime = task.DueTime.ToString()
+            DueTime = task.DueTime.ToString(new CultureInfo("en-GB"))
         };
     }
 

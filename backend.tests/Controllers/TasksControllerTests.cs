@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using FluentAssertions;
 using backend.Exceptions;
 using backend.Models.Request;
+using System.Globalization;
 
 namespace Backend.Tests.Controllers;
 
@@ -30,7 +31,7 @@ public class TasksControllerTests
             Title = "Test Task",
             Description = "This is a test task",
             Status = "Open",
-            DueTime = DateTime.UtcNow.AddDays(1).ToString()
+            DueTime = DateTime.UtcNow.AddDays(1).ToString(new CultureInfo("en-GB"))
         };
 
         A.CallTo(() => _tasksService.GetById(taskId)).Returns(Task.FromResult(expectedResponse));
@@ -89,7 +90,7 @@ public class TasksControllerTests
             Title = request.Title,
             Description = request.Description,
             Status = request.Status,
-            DueTime = request.DueTime.ToString(),
+            DueTime = request.DueTime.ToString(new CultureInfo("en-GB")),
         };
 
         A.CallTo(() => _tasksService.Add(request)).Returns(Task.FromResult(newTaskId));

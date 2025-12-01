@@ -1,3 +1,4 @@
+using System.Globalization;
 using backend.Models.Database;
 using backend.Repositories;
 using backend.Services;
@@ -40,7 +41,7 @@ public class TasksServiceTests
         result.Title.Should().Be(dbTask.Title);
         result.Description.Should().Be(dbTask.Description);
         result.Status.Should().Be(dbTask.Status);
-        result.DueTime.Should().Be(dbTask.DueTime.ToString());
+        result.DueTime.Should().Be(dbTask.DueTime.ToString(new CultureInfo("en-GB")));
     }
 
     [Fact]
